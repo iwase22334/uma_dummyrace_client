@@ -8,7 +8,7 @@ import dummyrace
 query = '''SELECT year, monthday, jyocd, kaiji, nichiji, racenum \
 from n_race \
 where concat(year, monthday) > '20000000' and datakubun='7' \
-order by year asc, monthday asc limit 1'''.strip()
+order by year asc, monthday asc, jyocd asc, kaiji asc, nichiji asc, racenum asc limit 1'''.strip()
 
 print (query)
 
@@ -24,7 +24,7 @@ with connection.cursor() as cur:
 
 connection.close()
 
-vote_list = [("01", 10), ("06", 20)]
+vote_list = [("02", 10), ("06", 20)]
 
 print(id)
 print(vote_list)
