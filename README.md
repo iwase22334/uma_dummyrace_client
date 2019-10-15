@@ -8,5 +8,5 @@
   ```
   * vote_list: list of tuple 
   ```
-    [{"<umaban>": <vote num>}, ...] 
+    [("<umaban>", <vote num>), ...] 
   ```
