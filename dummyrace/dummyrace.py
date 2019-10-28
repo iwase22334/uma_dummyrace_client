@@ -8,6 +8,7 @@ class DummyRace:
 
     @classmethod
     def __generate_query_tansyo(cls, id, vote_list):
+        global query
         query = '{ "race_id": { "year":"%s", "monthday":"%s", "jyocd":"%s", "kaiji":"%s", "nichiji":"%s", "racenum":"%s" },' % (id)
         query = query + ' "tansyo_vote": [ '
 
@@ -25,8 +26,13 @@ class DummyRace:
 
     # @param id [ 'year', 'monthday', 'jyocd', 'kaiji', 'nichiji', 'racenum']
     def vote_tansyo(self, id, vote_list):
+        if vote_list is None:
+            return 0
+        if vote_list is []:
+            return 0
 
         query = DummyRace.__generate_query_tansyo(id, vote_list)
+        print(query)
         r = requests.post(self.__dummy_race_server_url, query)
 
         if r.status_code == 200:
